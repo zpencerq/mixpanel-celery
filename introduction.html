@@ -6,8 +6,8 @@
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
     <title>mixpanel-celery - Asynchronous event tracking for Mixpanel &mdash; mixpanel-celery v0.3.0.dev documentation</title>
-    <link rel="stylesheet" href="static/default.css" type="text/css" />
-    <link rel="stylesheet" href="static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="_static/default.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    '',
@@ -17,8 +17,8 @@
         HAS_SOURCE:  true
       };
     </script>
-    <script type="text/javascript" src="static/jquery.js"></script>
-    <script type="text/javascript" src="static/doctools.js"></script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
     <link rel="top" title="mixpanel-celery v0.3.0.dev documentation" href="index.html" />
     <link rel="next" title="Configuring mixpanel-celery" href="configuration.html" />
     <link rel="prev" title="Welcome to mixpanel-celery’s documentation!" href="index.html" /> 
@@ -30,6 +30,9 @@
         <li class="right" style="margin-right: 10px">
           <a href="genindex.html" title="General Index"
              accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="modindex.html" title="Global Module Index"
+             accesskey="M">modules</a> |</li>
         <li class="right" >
           <a href="configuration.html" title="Configuring mixpanel-celery"
              accesskey="N">next</a> |</li>
@@ -51,7 +54,7 @@
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field"><th class="field-name">Version:</th><td class="field-body">0.1.0</td>
+<tr class="field"><th class="field-name">Version:</th><td class="field-body">0.3.0.dev</td>
 </tr>
 </tbody>
 </table>
@@ -75,43 +78,40 @@ via <tt class="docutils literal"><span class="pre">pip</span></tt>:</p>
 <h2>Configuration<a class="headerlink" href="#configuration" title="Permalink to this headline">¶</a></h2>
 <p>For easy test usage with Django, set your Mixpanel api token in your project&#8217;s
 <tt class="docutils literal"><span class="pre">settings.py</span></tt> file with the <tt class="docutils literal"><span class="pre">MIXPANEL_API_TOKEN</span></tt> variable. Then set:</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="sb">``</span><span class="n">CELERY_ALWAYS_EAGER</span><span class="sb">``</span> <span class="o">=</span> <span class="bp">True</span>
+<div class="highlight-python"><div class="highlight"><pre><span class="n">CELERY_ALWAYS_EAGER</span> <span class="o">=</span> <span class="bp">True</span>
 </pre></div>
 </div>
 <p>So that all of your <a class="reference external" href="http://ask.github.com/celery/">Celery</a> tasks will run in-line for now.</p>
 <p>Then add <tt class="docutils literal"><span class="pre">mixpanel</span></tt> to your list of <tt class="docutils literal"><span class="pre">INSTALLED_APPS</span></tt>.</p>
-<p>Note: Obviously you&#8217;ll want to actually configure <tt class="docutils literal"><span class="pre">Celery</span></tt> using one of the
-many available backends for actual production use and <tt class="docutils literal"><span class="pre">Celery</span></tt> has great
+<p>Note: Obviously you&#8217;ll want to actually configure <a class="reference external" href="http://ask.github.com/celery/">Celery</a> using one of the
+many available backends for actual production use and <a class="reference external" href="http://ask.github.com/celery/">Celery</a> has great
 documentation on that.</p>
 </div>
 <div class="section" id="usage">
 <h2>Usage<a class="headerlink" href="#usage" title="Permalink to this headline">¶</a></h2>
-<p>Basic python example tracking an event called &#8216;my_event&#8217;:</p>
-<div class="highlight-python"><pre>.. code-block: python</pre>
+<p>Basic python example tracking an event called <tt class="docutils literal"><span class="pre">my_event</span></tt></p>
+<div class="highlight-python"><div class="highlight"><pre><span class="kn">from</span> <span class="nn">mixpanel.tasks</span> <span class="kn">import</span> <span class="n">track_event</span>
+
+<span class="n">track_event</span><span class="p">(</span><span class="s">&#39;my_event&#39;</span><span class="p">,</span> <span class="p">{</span><span class="s">&#39;user_id&#39;</span><span class="p">:</span> <span class="mi">1</span><span class="p">},</span> <span class="n">token</span><span class="o">=</span><span class="s">&#39;YOUR_API_TOKEN&#39;</span><span class="p">)</span>
+</pre></div>
 </div>
-<blockquote>
-<p>from mixpanel.tasks import track_event</p>
-<p>track_event(&#8216;my_event&#8217;, {&#8216;user_id&#8217;: 1}, token=&#8217;YOUR_API_TOKEN&#8217;)</p>
-</blockquote>
-<p>Example usage in a Django view:</p>
-<div class="highlight-python"><pre>.. code-block:: python</pre>
+<p>Example usage in a Django view</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="kn">from</span> <span class="nn">mixpanel.tasks</span> <span class="kn">import</span> <span class="n">tck_event</span>
+<span class="kn">from</span> <span class="nn">django.shortcuts</span> <span class="kn">import</span> <span class="n">render_to_response</span>
+
+<span class="k">def</span> <span class="nf">test_view</span><span class="p">(</span><span class="n">request</span><span class="p">,</span> <span class="n">template</span><span class="o">=</span><span class="s">&#39;test/test_view.html&#39;</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Show a user a test page. Records</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">user</span> <span class="o">=</span> <span class="n">request</span><span class="o">.</span><span class="n">user</span>
+
+    <span class="c"># We should record that the user hit this page</span>
+    <span class="n">track_event</span><span class="p">(</span><span class="s">&#39;hit_test_view&#39;</span><span class="p">,</span> <span class="p">{</span><span class="s">&#39;user_id&#39;</span><span class="p">:</span> <span class="n">user</span><span class="o">.</span><span class="n">pk</span><span class="p">})</span>
+
+    <span class="n">context</span> <span class="o">=</span> <span class="n">RequestContext</span><span class="p">(</span><span class="n">request</span><span class="p">,</span> <span class="p">{})</span>
+    <span class="k">return</span> <span class="n">render_to_response</span><span class="p">(</span><span class="n">template</span><span class="p">,</span> <span class="n">context_instance</span><span class="o">=</span><span class="n">context</span><span class="p">)</span>
+</pre></div>
 </div>
-<blockquote>
-<p>from mixpanel.tasks import track_event
-from django.shortcuts import render_to_response</p>
-<dl class="docutils">
-<dt>def test_view(request, template=&#8217;test/test_view.html&#8217;):</dt>
-<dd><p class="first">&#8220;&#8221;&#8221;
-Show a user a test page. Records
-&#8220;&#8221;&#8221;
-user = request.user</p>
-<p># We should record that the user hit this page
-track_event(&#8216;hit_test_view&#8217;, {&#8216;user_id&#8217;: user.pk})</p>
-<p class="last">context = RequestContext(request, {})
-return render_to_response(template, context_instance=context)</p>
-</dd>
-</dl>
-</blockquote>
 </div>
 <div class="section" id="bug-tracker">
 <h2>Bug Tracker<a class="headerlink" href="#bug-tracker" title="Permalink to this headline">¶</a></h2>
@@ -158,7 +158,7 @@ file in the top distribution directory for the full license text.</p>
                                   title="next chapter">Configuring mixpanel-celery</a></p>
             <h3>This Page</h3>
             <ul class="this-page-menu">
-              <li><a href="sources/introduction.txt"
+              <li><a href="_sources/introduction.txt"
                      rel="nofollow">Show Source</a></li>
             </ul>
           <div id="searchbox" style="display: none">
@@ -184,6 +184,9 @@ file in the top distribution directory for the full license text.</p>
         <li class="right" style="margin-right: 10px">
           <a href="genindex.html" title="General Index"
              >index</a></li>
+        <li class="right" >
+          <a href="modindex.html" title="Global Module Index"
+             >modules</a> |</li>
         <li class="right" >
           <a href="configuration.html" title="Configuring mixpanel-celery"
              >next</a> |</li>
