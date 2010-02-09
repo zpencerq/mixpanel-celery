@@ -70,8 +70,9 @@ python, so does mixpanel-celery.</p>
 <div class="section" id="installation">
 <h2>Installation<a class="headerlink" href="#installation" title="Permalink to this headline">¶</a></h2>
 <p>The easiest way to install the current development version of mixpanel-celery is
-via <tt class="docutils literal"><span class="pre">pip</span></tt>:</p>
-<div class="highlight-python"><pre>$ pip install -e git+git://github.com/winhamwr/mixpanel-celery.git</pre>
+via <a class="reference external" href="http://pypi.python.org/pypi/pip">pip</a></p>
+<div class="highlight-bash"><div class="highlight"><pre><span class="nv">$ </span>pip install -e git+git://github.com/winhamwr/mixpanel-celery.git
+</pre></div>
 </div>
 </div>
 <div class="section" id="configuration">
@@ -90,23 +91,22 @@ documentation on that.</p>
 <div class="section" id="usage">
 <h2>Usage<a class="headerlink" href="#usage" title="Permalink to this headline">¶</a></h2>
 <p>Basic python example tracking an event called <tt class="docutils literal"><span class="pre">my_event</span></tt></p>
-<div class="highlight-python"><div class="highlight"><pre><span class="kn">from</span> <span class="nn">mixpanel.tasks</span> <span class="kn">import</span> <span class="n">track_event</span>
+<div class="highlight-python"><div class="highlight"><pre><span class="kn">from</span> <span class="nn">mixpanel.tasks</span> <span class="kn">import</span> <span class="n">EventTracker</span>
 
-<span class="n">track_event</span><span class="p">(</span><span class="s">&#39;my_event&#39;</span><span class="p">,</span> <span class="p">{</span><span class="s">&#39;user_id&#39;</span><span class="p">:</span> <span class="mi">1</span><span class="p">},</span> <span class="n">token</span><span class="o">=</span><span class="s">&#39;YOUR_API_TOKEN&#39;</span><span class="p">)</span>
+<span class="n">et</span> <span class="o">=</span> <span class="n">EventTracker</span><span class="p">()</span>
+<span class="n">et</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="s">&#39;my_event&#39;</span><span class="p">,</span> <span class="p">{</span><span class="s">&#39;distinct_id&#39;</span><span class="p">:</span> <span class="mi">1</span><span class="p">},</span> <span class="n">token</span><span class="o">=</span><span class="s">&#39;YOUR_API_TOKEN&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
 <p>Example usage in a Django view</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="kn">from</span> <span class="nn">mixpanel.tasks</span> <span class="kn">import</span> <span class="n">tck_event</span>
+<div class="highlight-python"><div class="highlight"><pre><span class="kn">from</span> <span class="nn">mixpanel.tasks</span> <span class="kn">import</span> <span class="n">track_event</span>
 <span class="kn">from</span> <span class="nn">django.shortcuts</span> <span class="kn">import</span> <span class="n">render_to_response</span>
 
 <span class="k">def</span> <span class="nf">test_view</span><span class="p">(</span><span class="n">request</span><span class="p">,</span> <span class="n">template</span><span class="o">=</span><span class="s">&#39;test/test_view.html&#39;</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">    Show a user a test page. Records</span>
+<span class="sd">    Show user a test page.</span>
 <span class="sd">    &quot;&quot;&quot;</span>
-    <span class="n">user</span> <span class="o">=</span> <span class="n">request</span><span class="o">.</span><span class="n">user</span>
-
     <span class="c"># We should record that the user hit this page</span>
-    <span class="n">track_event</span><span class="p">(</span><span class="s">&#39;hit_test_view&#39;</span><span class="p">,</span> <span class="p">{</span><span class="s">&#39;user_id&#39;</span><span class="p">:</span> <span class="n">user</span><span class="o">.</span><span class="n">pk</span><span class="p">})</span>
+    <span class="n">track_event</span><span class="p">(</span><span class="s">&#39;hit_test_view&#39;</span><span class="p">,</span> <span class="p">{</span><span class="s">&#39;distinct_id&#39;</span><span class="p">:</span> <span class="n">request</span><span class="o">.</span><span class="n">user</span><span class="o">.</span><span class="n">pk</span><span class="p">})</span>
 
     <span class="n">context</span> <span class="o">=</span> <span class="n">RequestContext</span><span class="p">(</span><span class="n">request</span><span class="p">,</span> <span class="p">{})</span>
     <span class="k">return</span> <span class="n">render_to_response</span><span class="p">(</span><span class="n">template</span><span class="p">,</span> <span class="n">context_instance</span><span class="o">=</span><span class="n">context</span><span class="p">)</span>
