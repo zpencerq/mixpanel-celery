@@ -89,12 +89,11 @@ via <a class="reference external" href="http://pypi.python.org/pypi/pip">pip</a>
 the test suite.</p>
 <p>It is also possible to run specific tests, disable coverage, use
 <tt class="docutils literal"><span class="pre">--multiprocess</span></tt>, etc. by using the <tt class="docutils literal"><span class="pre">scripts/run_tests.py</span></tt> script. For
-example, to only run a  single test:</p>
-<div class="highlight-python"><pre>.. code-block:: bash</pre>
+example, to only run a  single test</p>
+<div class="highlight-bash"><div class="highlight"><pre><span class="nv">$ </span><span class="nb">cd</span> /path/to/mixpanel-celery/scripts
+<span class="nv">$ </span>./run_tests.py mixpanel.test.test_tasks:EventTrackerTest.test_handle_properties_no_token
+</pre></div>
 </div>
-<blockquote>
-$ cd /path/to/mixpanel-celery/scripts
-$ ./run_tests.py mixpanel.test.test_tasks:EventTrackerTest.test_handle_properties_no_token</blockquote>
 </div>
 <div class="section" id="configuration">
 <h2>Configuration<a class="headerlink" href="#configuration" title="Permalink to this headline">¶</a></h2>
@@ -136,14 +135,13 @@ documentation on that.</p>
 </div>
 <div class="section" id="building-the-documentation">
 <h2>Building the Documentation<a class="headerlink" href="#building-the-documentation" title="Permalink to this headline">¶</a></h2>
-<p>mixpanel-celery uses <a class="reference external" href="http://sphinx.pocoo.org/">sphinx</a> for documentation. To build the HTML docs:</p>
-<div class="highlight-python"><pre>.. code-block:: bash</pre>
+<p>mixpanel-celery uses <a class="reference external" href="http://sphinx.pocoo.org/">sphinx</a> for documentation. To build the HTML docs</p>
+<div class="highlight-bash"><div class="highlight"><pre><span class="nv">$ </span>pip install sphinx
+<span class="nv">$ </span>pip install sphinxtogithub
+<span class="nv">$ </span><span class="nb">cd</span> /path/to/mixpanel-celery/docs
+<span class="nv">$ </span>make html
+</pre></div>
 </div>
-<blockquote>
-$ pip install sphinx
-$ pip install sphinxtogithub
-$ cd /path/to/mixpanel-celery/docs
-$ make html</blockquote>
 </div>
 <div class="section" id="bug-tracker">
 <h2>Bug Tracker<a class="headerlink" href="#bug-tracker" title="Permalink to this headline">¶</a></h2>
