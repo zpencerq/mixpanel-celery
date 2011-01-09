@@ -1,3 +1,5 @@
+
+
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
   "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 
@@ -5,21 +7,22 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>Configuration: mixpanel - mixpanel.conf.settings &mdash; mixpanel-celery v0.3.0.dev documentation</title>
+    <title>Configuration: mixpanel - mixpanel.conf.settings &mdash; mixpanel-celery v0.5.0. documentation</title>
     <link rel="stylesheet" href="../static/default.css" type="text/css" />
     <link rel="stylesheet" href="../static/pygments.css" type="text/css" />
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    '../',
-        VERSION:     '0.3.0.dev',
-        COLLAPSE_MODINDEX: false,
+        VERSION:     '0.5.0.',
+        COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  true
       };
     </script>
     <script type="text/javascript" src="../static/jquery.js"></script>
+    <script type="text/javascript" src="../static/underscore.js"></script>
     <script type="text/javascript" src="../static/doctools.js"></script>
-    <link rel="top" title="mixpanel-celery v0.3.0.dev documentation" href="../index.html" />
+    <link rel="top" title="mixpanel-celery v0.5.0. documentation" href="../index.html" />
     <link rel="up" title="Module API Reference" href="index.html" />
     <link rel="prev" title="Mixpanel Settings: mixpanel - mixpanel.conf" href="mixpanel.conf.html" /> 
   </head>
@@ -31,12 +34,12 @@
           <a href="../genindex.html" title="General Index"
              accesskey="I">index</a></li>
         <li class="right" >
-          <a href="../modindex.html" title="Global Module Index"
-             accesskey="M">modules</a> |</li>
+          <a href="../py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
         <li class="right" >
           <a href="mixpanel.conf.html" title="Mixpanel Settings: mixpanel - mixpanel.conf"
              accesskey="P">previous</a> |</li>
-        <li><a href="../index.html">mixpanel-celery v0.3.0.dev documentation</a> &raquo;</li>
+        <li><a href="../index.html">mixpanel-celery v0.5.0. documentation</a> &raquo;</li>
           <li><a href="index.html" accesskey="U">Module API Reference</a> &raquo;</li> 
       </ul>
     </div>  
@@ -47,7 +50,7 @@
           <div class="body">
             
   <div class="section" id="module-mixpanel.conf.settings">
-<h1>Configuration: mixpanel - mixpanel.conf.settings<a class="headerlink" href="#module-mixpanel.conf.settings" title="Permalink to this headline">¶</a></h1>
+<span id="configuration-mixpanel-mixpanel-conf-settings"></span><h1>Configuration: mixpanel - mixpanel.conf.settings<a class="headerlink" href="#module-mixpanel.conf.settings" title="Permalink to this headline">¶</a></h1>
 <p>Default configuration values and documentation</p>
 <dl class="data">
 <dt id="mixpanel.conf.settings.MIXPANEL_API_SERVER">
@@ -57,6 +60,17 @@
 <tt class="descclassname">mixpanel.conf.settings.</tt><tt class="descname">MIXPANEL_TRACKING_ENDPOINT</tt><a class="headerlink" href="#mixpanel.conf.settings.MIXPANEL_TRACKING_ENDPOINT" title="Permalink to this definition">¶</a></dt>
 <dd><p>URL endpoint for registering events. defaults to <tt class="docutils literal"><span class="pre">/track/</span></tt></p>
 <p>Mind the slashes.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="data">
+<dt id="mixpanel.conf.settings.MIXPANEL_API_TIMEOUT">
+<tt class="descclassname">mixpanel.conf.settings.</tt><tt class="descname">MIXPANEL_API_TIMEOUT</tt><a class="headerlink" href="#mixpanel.conf.settings.MIXPANEL_API_TIMEOUT" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="data">
+<dt>
+<tt class="descclassname">mixpanel.conf.settings.</tt><tt class="descname">MIXPANEL_API_SERVER</tt></dt>
+<dd><p>URL for the mixpanel api server. This probably shouldn&#8217;t change.</p>
 </dd></dl>
 
 </dd></dl>
@@ -81,8 +95,9 @@ usually 502&#8217;s or 504&#8217;s because Mixpanel is under increased load.</p>
 <dd><dl class="data">
 <dt id="mixpanel.conf.settings.MIXPANEL_FUNNEL_EVENT_ID">
 <tt class="descclassname">mixpanel.conf.settings.</tt><tt class="descname">MIXPANEL_FUNNEL_EVENT_ID</tt><a class="headerlink" href="#mixpanel.conf.settings.MIXPANEL_FUNNEL_EVENT_ID" title="Permalink to this definition">¶</a></dt>
-<dd>The event identifier that indicates that a funnel is being tracked and not
-just a normal event.</dd></dl>
+<dd><p>The event identifier that indicates that a funnel is being tracked and not
+just a normal event.</p>
+</dd></dl>
 
 </dd></dl>
 
@@ -92,8 +107,23 @@ just a normal event.</dd></dl>
 <dd><dl class="data">
 <dt id="mixpanel.conf.settings.MIXPANEL_TEST_ONLY">
 <tt class="descclassname">mixpanel.conf.settings.</tt><tt class="descname">MIXPANEL_TEST_ONLY</tt><a class="headerlink" href="#mixpanel.conf.settings.MIXPANEL_TEST_ONLY" title="Permalink to this definition">¶</a></dt>
-<dd>If this value is True, then events will be sent to Mixpanel with the property
-test = 1 so that no events will actually be logged.</dd></dl>
+<dd><p>If this value is True, then events will be sent to Mixpanel with the property
+test = 1 so that no events will actually be logged.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="data">
+<dt id="mixpanel.conf.settings.MIXPANEL_MAX_RETRIES">
+<tt class="descclassname">mixpanel.conf.settings.</tt><tt class="descname">MIXPANEL_MAX_RETRIES</tt><a class="headerlink" href="#mixpanel.conf.settings.MIXPANEL_MAX_RETRIES" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="data">
+<dt>
+<tt class="descclassname">mixpanel.conf.settings.</tt><tt class="descname">MIXPANEL_API_TIMEOUT</tt></dt>
+<dd><p>Number of seconds to wait before timing out a request the mixpanel api
+server. The default 30-second timeout can cause your job queue to become
+swamped.</p>
+<p>Defaults to 5 seconds.</p>
+</dd></dl>
 
 </dd></dl>
 
@@ -102,8 +132,10 @@ test = 1 so that no events will actually be logged.</dd></dl>
 <tt class="descclassname">mixpanel.conf.settings.</tt><tt class="descname">MIXPANEL_RETRY_DELAY</tt></dt>
 <dd><dl class="data">
 <dt>
-<tt class="descclassname">mixpanel.conf.settings.</tt><tt class="descname">MIXPANEL_API_SERVER</tt></dt>
-<dd>URL for the mixpanel api server. This probably shouldn&#8217;t change.</dd></dl>
+<tt class="descclassname">mixpanel.conf.settings.</tt><tt class="descname">MIXPANEL_MAX_RETRIES</tt></dt>
+<dd><p>Number of retry attempts to make before raising an exception.</p>
+<p>Defaults to 5 attempts.</p>
+</dd></dl>
 
 </dd></dl>
 
@@ -113,8 +145,9 @@ test = 1 so that no events will actually be logged.</dd></dl>
 <dd><dl class="data">
 <dt>
 <tt class="descclassname">mixpanel.conf.settings.</tt><tt class="descname">MIXPANEL_DATA_VARIABLE</tt></dt>
-<dd>Name of the http GET variable used for transferring property information
-when registering events.</dd></dl>
+<dd><p>Name of the http GET variable used for transferring property information
+when registering events.</p>
+</dd></dl>
 
 </dd></dl>
 
@@ -126,27 +159,27 @@ when registering events.</dd></dl>
       </div>
       <div class="sphinxsidebar">
         <div class="sphinxsidebarwrapper">
-            <h4>Previous topic</h4>
-            <p class="topless"><a href="mixpanel.conf.html"
-                                  title="previous chapter">Mixpanel Settings: mixpanel - mixpanel.conf</a></p>
-            <h3>This Page</h3>
-            <ul class="this-page-menu">
-              <li><a href="../sources/reference/mixpanel.conf.settings.txt"
-                     rel="nofollow">Show Source</a></li>
-            </ul>
-          <div id="searchbox" style="display: none">
-            <h3>Quick search</h3>
-              <form class="search" action="../search.html" method="get">
-                <input type="text" name="q" size="18" />
-                <input type="submit" value="Go" />
-                <input type="hidden" name="check_keywords" value="yes" />
-                <input type="hidden" name="area" value="default" />
-              </form>
-              <p class="searchtip" style="font-size: 90%">
-              Enter search terms or a module, class or function name.
-              </p>
-          </div>
-          <script type="text/javascript">$('#searchbox').show(0);</script>
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="mixpanel.conf.html"
+                        title="previous chapter">Mixpanel Settings: mixpanel - mixpanel.conf</a></p>
+  <h3>This Page</h3>
+  <ul class="this-page-menu">
+    <li><a href="../sources/reference/mixpanel.conf.settings.txt"
+           rel="nofollow">Show Source</a></li>
+  </ul>
+<div id="searchbox" style="display: none">
+  <h3>Quick search</h3>
+    <form class="search" action="../search.html" method="get">
+      <input type="text" name="q" size="18" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
         </div>
       </div>
       <div class="clearer"></div>
@@ -158,18 +191,18 @@ when registering events.</dd></dl>
           <a href="../genindex.html" title="General Index"
              >index</a></li>
         <li class="right" >
-          <a href="../modindex.html" title="Global Module Index"
+          <a href="../py-modindex.html" title="Python Module Index"
              >modules</a> |</li>
         <li class="right" >
           <a href="mixpanel.conf.html" title="Mixpanel Settings: mixpanel - mixpanel.conf"
              >previous</a> |</li>
-        <li><a href="../index.html">mixpanel-celery v0.3.0.dev documentation</a> &raquo;</li>
+        <li><a href="../index.html">mixpanel-celery v0.5.0. documentation</a> &raquo;</li>
           <li><a href="index.html" >Module API Reference</a> &raquo;</li> 
       </ul>
     </div>
     <div class="footer">
-      &copy; Copyright 2009, Wes Winham.
-      Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 0.6.3.
+        &copy; Copyright 2009, Wes Winham.
+      Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.0.6.
     </div>
   </body>
 </html>

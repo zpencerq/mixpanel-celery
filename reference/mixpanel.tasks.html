@@ -1,3 +1,5 @@
+
+
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
   "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 
@@ -5,21 +7,22 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>Event Tracker Tasks: mixpanel - mixpanel.tasks &mdash; mixpanel-celery v0.3.0.dev documentation</title>
+    <title>Event Tracker Tasks: mixpanel - mixpanel.tasks &mdash; mixpanel-celery v0.5.0. documentation</title>
     <link rel="stylesheet" href="../static/default.css" type="text/css" />
     <link rel="stylesheet" href="../static/pygments.css" type="text/css" />
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    '../',
-        VERSION:     '0.3.0.dev',
-        COLLAPSE_MODINDEX: false,
+        VERSION:     '0.5.0.',
+        COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  true
       };
     </script>
     <script type="text/javascript" src="../static/jquery.js"></script>
+    <script type="text/javascript" src="../static/underscore.js"></script>
     <script type="text/javascript" src="../static/doctools.js"></script>
-    <link rel="top" title="mixpanel-celery v0.3.0.dev documentation" href="../index.html" />
+    <link rel="top" title="mixpanel-celery v0.5.0. documentation" href="../index.html" />
     <link rel="up" title="Module API Reference" href="index.html" />
     <link rel="next" title="Mixpanel Settings: mixpanel - mixpanel.conf" href="mixpanel.conf.html" />
     <link rel="prev" title="Empty Django Models: mixpanel - mixpanel.models" href="mixpanel.models.html" /> 
@@ -32,15 +35,15 @@
           <a href="../genindex.html" title="General Index"
              accesskey="I">index</a></li>
         <li class="right" >
-          <a href="../modindex.html" title="Global Module Index"
-             accesskey="M">modules</a> |</li>
+          <a href="../py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
         <li class="right" >
           <a href="mixpanel.conf.html" title="Mixpanel Settings: mixpanel - mixpanel.conf"
              accesskey="N">next</a> |</li>
         <li class="right" >
           <a href="mixpanel.models.html" title="Empty Django Models: mixpanel - mixpanel.models"
              accesskey="P">previous</a> |</li>
-        <li><a href="../index.html">mixpanel-celery v0.3.0.dev documentation</a> &raquo;</li>
+        <li><a href="../index.html">mixpanel-celery v0.5.0. documentation</a> &raquo;</li>
           <li><a href="index.html" accesskey="U">Module API Reference</a> &raquo;</li> 
       </ul>
     </div>  
@@ -51,19 +54,20 @@
           <div class="body">
             
   <div class="section" id="module-mixpanel.tasks">
-<h1>Event Tracker Tasks: mixpanel - mixpanel.tasks<a class="headerlink" href="#module-mixpanel.tasks" title="Permalink to this headline">¶</a></h1>
+<span id="event-tracker-tasks-mixpanel-mixpanel-tasks"></span><h1>Event Tracker Tasks: mixpanel - mixpanel.tasks<a class="headerlink" href="#module-mixpanel.tasks" title="Permalink to this headline">¶</a></h1>
 <dl class="class">
 <dt id="mixpanel.tasks.EventTracker">
-<em class="property">class </em><tt class="descclassname">mixpanel.tasks.</tt><tt class="descname">EventTracker</tt><big>(</big><em>*args</em>, <em>**kwargs</em><big>)</big><a class="headerlink" href="#mixpanel.tasks.EventTracker" title="Permalink to this definition">¶</a></dt>
+<em class="property">class </em><tt class="descclassname">mixpanel.tasks.</tt><tt class="descname">EventTracker</tt><a class="headerlink" href="#mixpanel.tasks.EventTracker" title="Permalink to this definition">¶</a></dt>
 <dd><p>Task to track a Mixpanel event.</p>
 <dl class="exception">
 <dt id="mixpanel.tasks.EventTracker.FailedEventRequest">
 <em class="property">exception </em><tt class="descname">FailedEventRequest</tt><a class="headerlink" href="#mixpanel.tasks.EventTracker.FailedEventRequest" title="Permalink to this definition">¶</a></dt>
-<dd>The attempted recording event failed because of a non-200 HTTP return code</dd></dl>
+<dd><p>The attempted recording event failed because of a non-200 HTTP return code</p>
+</dd></dl>
 
 <dl class="method">
 <dt id="mixpanel.tasks.EventTracker.run">
-<tt class="descclassname">EventTracker.</tt><tt class="descname">run</tt><big>(</big><em>event_name</em>, <em>properties=None</em>, <em>token=None</em>, <em>test=None</em>, <em>**kwargs</em><big>)</big><a class="headerlink" href="#mixpanel.tasks.EventTracker.run" title="Permalink to this definition">¶</a></dt>
+<tt class="descclassname">EventTracker.</tt><tt class="descname">run</tt><big>(</big><em>event_name</em>, <em>properties=None</em>, <em>token=None</em>, <em>test=None</em>, <em>throw_retry_error=False</em>, <em>**kwargs</em><big>)</big><a class="headerlink" href="#mixpanel.tasks.EventTracker.run" title="Permalink to this definition">¶</a></dt>
 <dd><p>Track an event occurrence to mixpanel through the API.</p>
 <p><tt class="docutils literal"><span class="pre">event_name</span></tt> is the string for the event/category you&#8217;d like to log
 this event under
@@ -80,16 +84,17 @@ if the event requests should actually be stored on the Mixpanel servers.</p>
 
 <dl class="class">
 <dt id="mixpanel.tasks.FunnelEventTracker">
-<em class="property">class </em><tt class="descclassname">mixpanel.tasks.</tt><tt class="descname">FunnelEventTracker</tt><big>(</big><em>*args</em>, <em>**kwargs</em><big>)</big><a class="headerlink" href="#mixpanel.tasks.FunnelEventTracker" title="Permalink to this definition">¶</a></dt>
+<em class="property">class </em><tt class="descclassname">mixpanel.tasks.</tt><tt class="descname">FunnelEventTracker</tt><a class="headerlink" href="#mixpanel.tasks.FunnelEventTracker" title="Permalink to this definition">¶</a></dt>
 <dd><p>Task to track a Mixpanel funnel event.</p>
 <dl class="exception">
 <dt id="mixpanel.tasks.FunnelEventTracker.InvalidFunnelProperties">
 <em class="property">exception </em><tt class="descname">InvalidFunnelProperties</tt><a class="headerlink" href="#mixpanel.tasks.FunnelEventTracker.InvalidFunnelProperties" title="Permalink to this definition">¶</a></dt>
-<dd>Required properties were missing from the funnel-tracking call</dd></dl>
+<dd><p>Required properties were missing from the funnel-tracking call</p>
+</dd></dl>
 
 <dl class="method">
 <dt id="mixpanel.tasks.FunnelEventTracker.run">
-<tt class="descclassname">FunnelEventTracker.</tt><tt class="descname">run</tt><big>(</big><em>funnel</em>, <em>step</em>, <em>goal</em>, <em>properties</em>, <em>token=None</em>, <em>test=None</em>, <em>**kwargs</em><big>)</big><a class="headerlink" href="#mixpanel.tasks.FunnelEventTracker.run" title="Permalink to this definition">¶</a></dt>
+<tt class="descclassname">FunnelEventTracker.</tt><tt class="descname">run</tt><big>(</big><em>funnel</em>, <em>step</em>, <em>goal</em>, <em>properties</em>, <em>token=None</em>, <em>test=None</em>, <em>throw_retry_error=False</em>, <em>**kwargs</em><big>)</big><a class="headerlink" href="#mixpanel.tasks.FunnelEventTracker.run" title="Permalink to this definition">¶</a></dt>
 <dd><p>Track an event occurrence to mixpanel through the API.</p>
 <p><tt class="docutils literal"><span class="pre">funnel</span></tt> is the string for the funnel you&#8217;d like to log
 this event under
@@ -114,30 +119,30 @@ if the event requests should actually be stored on the Mixpanel servers.</p>
       </div>
       <div class="sphinxsidebar">
         <div class="sphinxsidebarwrapper">
-            <h4>Previous topic</h4>
-            <p class="topless"><a href="mixpanel.models.html"
-                                  title="previous chapter">Empty Django Models: mixpanel - mixpanel.models</a></p>
-            <h4>Next topic</h4>
-            <p class="topless"><a href="mixpanel.conf.html"
-                                  title="next chapter">Mixpanel Settings: mixpanel - mixpanel.conf</a></p>
-            <h3>This Page</h3>
-            <ul class="this-page-menu">
-              <li><a href="../sources/reference/mixpanel.tasks.txt"
-                     rel="nofollow">Show Source</a></li>
-            </ul>
-          <div id="searchbox" style="display: none">
-            <h3>Quick search</h3>
-              <form class="search" action="../search.html" method="get">
-                <input type="text" name="q" size="18" />
-                <input type="submit" value="Go" />
-                <input type="hidden" name="check_keywords" value="yes" />
-                <input type="hidden" name="area" value="default" />
-              </form>
-              <p class="searchtip" style="font-size: 90%">
-              Enter search terms or a module, class or function name.
-              </p>
-          </div>
-          <script type="text/javascript">$('#searchbox').show(0);</script>
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="mixpanel.models.html"
+                        title="previous chapter">Empty Django Models: mixpanel - mixpanel.models</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="mixpanel.conf.html"
+                        title="next chapter">Mixpanel Settings: mixpanel - mixpanel.conf</a></p>
+  <h3>This Page</h3>
+  <ul class="this-page-menu">
+    <li><a href="../sources/reference/mixpanel.tasks.txt"
+           rel="nofollow">Show Source</a></li>
+  </ul>
+<div id="searchbox" style="display: none">
+  <h3>Quick search</h3>
+    <form class="search" action="../search.html" method="get">
+      <input type="text" name="q" size="18" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
         </div>
       </div>
       <div class="clearer"></div>
@@ -149,7 +154,7 @@ if the event requests should actually be stored on the Mixpanel servers.</p>
           <a href="../genindex.html" title="General Index"
              >index</a></li>
         <li class="right" >
-          <a href="../modindex.html" title="Global Module Index"
+          <a href="../py-modindex.html" title="Python Module Index"
              >modules</a> |</li>
         <li class="right" >
           <a href="mixpanel.conf.html" title="Mixpanel Settings: mixpanel - mixpanel.conf"
@@ -157,13 +162,13 @@ if the event requests should actually be stored on the Mixpanel servers.</p>
         <li class="right" >
           <a href="mixpanel.models.html" title="Empty Django Models: mixpanel - mixpanel.models"
              >previous</a> |</li>
-        <li><a href="../index.html">mixpanel-celery v0.3.0.dev documentation</a> &raquo;</li>
+        <li><a href="../index.html">mixpanel-celery v0.5.0. documentation</a> &raquo;</li>
           <li><a href="index.html" >Module API Reference</a> &raquo;</li> 
       </ul>
     </div>
     <div class="footer">
-      &copy; Copyright 2009, Wes Winham.
-      Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 0.6.3.
+        &copy; Copyright 2009, Wes Winham.
+      Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.0.6.
     </div>
   </body>
 </html>

@@ -1,3 +1,5 @@
+
+
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
   "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 
@@ -5,21 +7,22 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>mixpanel-celery - Asynchronous event tracking for Mixpanel &mdash; mixpanel-celery v0.3.0.dev documentation</title>
+    <title>mixpanel-celery - Asynchronous event tracking for Mixpanel &mdash; mixpanel-celery v0.5.0. documentation</title>
     <link rel="stylesheet" href="static/default.css" type="text/css" />
     <link rel="stylesheet" href="static/pygments.css" type="text/css" />
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    '',
-        VERSION:     '0.3.0.dev',
-        COLLAPSE_MODINDEX: false,
+        VERSION:     '0.5.0.',
+        COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  true
       };
     </script>
     <script type="text/javascript" src="static/jquery.js"></script>
+    <script type="text/javascript" src="static/underscore.js"></script>
     <script type="text/javascript" src="static/doctools.js"></script>
-    <link rel="top" title="mixpanel-celery v0.3.0.dev documentation" href="index.html" />
+    <link rel="top" title="mixpanel-celery v0.5.0. documentation" href="index.html" />
     <link rel="next" title="Configuring mixpanel-celery" href="configuration.html" />
     <link rel="prev" title="Welcome to mixpanel-celery’s documentation!" href="index.html" /> 
   </head>
@@ -31,15 +34,15 @@
           <a href="genindex.html" title="General Index"
              accesskey="I">index</a></li>
         <li class="right" >
-          <a href="modindex.html" title="Global Module Index"
-             accesskey="M">modules</a> |</li>
+          <a href="py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
         <li class="right" >
           <a href="configuration.html" title="Configuring mixpanel-celery"
              accesskey="N">next</a> |</li>
         <li class="right" >
           <a href="index.html" title="Welcome to mixpanel-celery’s documentation!"
              accesskey="P">previous</a> |</li>
-        <li><a href="index.html">mixpanel-celery v0.3.0.dev documentation</a> &raquo;</li> 
+        <li><a href="index.html">mixpanel-celery v0.5.0. documentation</a> &raquo;</li> 
       </ul>
     </div>  
 
@@ -54,7 +57,7 @@
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field"><th class="field-name">Version:</th><td class="field-body">0.3.0.dev</td>
+<tr class="field"><th class="field-name">Version:</th><td class="field-body">0.5.0.</td>
 </tr>
 </tbody>
 </table>
@@ -74,6 +77,24 @@ via <a class="reference external" href="http://pypi.python.org/pypi/pip">pip</a>
 <div class="highlight-bash"><div class="highlight"><pre><span class="nv">$ </span>pip install -e git+git://github.com/winhamwr/mixpanel-celery.git
 </pre></div>
 </div>
+</div>
+<div class="section" id="running-the-test-suite">
+<h2>Running The Test Suite<a class="headerlink" href="#running-the-test-suite" title="Permalink to this headline">¶</a></h2>
+<p>Setuptools&#8217; <tt class="docutils literal"><span class="pre">nosetests</span></tt> command is the easiest way to run the test suite.</p>
+<div class="highlight-bash"><div class="highlight"><pre><span class="nv">$ </span><span class="nb">cd</span> /path/to/mixpanel-celery
+<span class="nv">$ </span>python setup.py nosetests
+</pre></div>
+</div>
+<p>Currently, two tests will fail unless you configure <a class="reference external" href="http://www.rabbitmq.com/">RabbitMQ</a> specifically for
+the test suite.</p>
+<p>It is also possible to run specific tests, disable coverage, use
+<tt class="docutils literal"><span class="pre">--multiprocess</span></tt>, etc. by using the <tt class="docutils literal"><span class="pre">scripts/run_tests.py</span></tt> script. For
+example, to only run a  single test:</p>
+<div class="highlight-python"><pre>.. code-block:: bash</pre>
+</div>
+<blockquote>
+$ cd /path/to/mixpanel-celery/scripts
+$ ./run_tests.py mixpanel.test.test_tasks:EventTrackerTest.test_handle_properties_no_token</blockquote>
 </div>
 <div class="section" id="configuration">
 <h2>Configuration<a class="headerlink" href="#configuration" title="Permalink to this headline">¶</a></h2>
@@ -113,6 +134,17 @@ documentation on that.</p>
 </pre></div>
 </div>
 </div>
+<div class="section" id="building-the-documentation">
+<h2>Building the Documentation<a class="headerlink" href="#building-the-documentation" title="Permalink to this headline">¶</a></h2>
+<p>mixpanel-celery uses <a class="reference external" href="http://sphinx.pocoo.org/">sphinx</a> for documentation. To build the HTML docs:</p>
+<div class="highlight-python"><pre>.. code-block:: bash</pre>
+</div>
+<blockquote>
+$ pip install sphinx
+$ pip install sphinxtogithub
+$ cd /path/to/mixpanel-celery/docs
+$ make html</blockquote>
+</div>
 <div class="section" id="bug-tracker">
 <h2>Bug Tracker<a class="headerlink" href="#bug-tracker" title="Permalink to this headline">¶</a></h2>
 <p>If you have feedback about bugs, features or anything else, the github issue
@@ -136,44 +168,46 @@ file in the top distribution directory for the full license text.</p>
       </div>
       <div class="sphinxsidebar">
         <div class="sphinxsidebarwrapper">
-            <h3><a href="index.html">Table Of Contents</a></h3>
-            <ul>
-<li><a class="reference external" href="">mixpanel-celery - Asynchronous event tracking for Mixpanel</a><ul>
-<li><a class="reference external" href="#introduction">Introduction</a></li>
-<li><a class="reference external" href="#installation">Installation</a></li>
-<li><a class="reference external" href="#configuration">Configuration</a></li>
-<li><a class="reference external" href="#usage">Usage</a></li>
-<li><a class="reference external" href="#bug-tracker">Bug Tracker</a></li>
-<li><a class="reference external" href="#license">License</a></li>
-<li><a class="reference external" href="#versioning">Versioning</a></li>
+  <h3><a href="index.html">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">mixpanel-celery - Asynchronous event tracking for Mixpanel</a><ul>
+<li><a class="reference internal" href="#introduction">Introduction</a></li>
+<li><a class="reference internal" href="#installation">Installation</a></li>
+<li><a class="reference internal" href="#running-the-test-suite">Running The Test Suite</a></li>
+<li><a class="reference internal" href="#configuration">Configuration</a></li>
+<li><a class="reference internal" href="#usage">Usage</a></li>
+<li><a class="reference internal" href="#building-the-documentation">Building the Documentation</a></li>
+<li><a class="reference internal" href="#bug-tracker">Bug Tracker</a></li>
+<li><a class="reference internal" href="#license">License</a></li>
+<li><a class="reference internal" href="#versioning">Versioning</a></li>
 </ul>
 </li>
 </ul>
 
-            <h4>Previous topic</h4>
-            <p class="topless"><a href="index.html"
-                                  title="previous chapter">Welcome to mixpanel-celery&#8217;s documentation!</a></p>
-            <h4>Next topic</h4>
-            <p class="topless"><a href="configuration.html"
-                                  title="next chapter">Configuring mixpanel-celery</a></p>
-            <h3>This Page</h3>
-            <ul class="this-page-menu">
-              <li><a href="sources/introduction.txt"
-                     rel="nofollow">Show Source</a></li>
-            </ul>
-          <div id="searchbox" style="display: none">
-            <h3>Quick search</h3>
-              <form class="search" action="search.html" method="get">
-                <input type="text" name="q" size="18" />
-                <input type="submit" value="Go" />
-                <input type="hidden" name="check_keywords" value="yes" />
-                <input type="hidden" name="area" value="default" />
-              </form>
-              <p class="searchtip" style="font-size: 90%">
-              Enter search terms or a module, class or function name.
-              </p>
-          </div>
-          <script type="text/javascript">$('#searchbox').show(0);</script>
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="index.html"
+                        title="previous chapter">Welcome to mixpanel-celery&#8217;s documentation!</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="configuration.html"
+                        title="next chapter">Configuring mixpanel-celery</a></p>
+  <h3>This Page</h3>
+  <ul class="this-page-menu">
+    <li><a href="sources/introduction.txt"
+           rel="nofollow">Show Source</a></li>
+  </ul>
+<div id="searchbox" style="display: none">
+  <h3>Quick search</h3>
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" size="18" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
         </div>
       </div>
       <div class="clearer"></div>
@@ -185,7 +219,7 @@ file in the top distribution directory for the full license text.</p>
           <a href="genindex.html" title="General Index"
              >index</a></li>
         <li class="right" >
-          <a href="modindex.html" title="Global Module Index"
+          <a href="py-modindex.html" title="Python Module Index"
              >modules</a> |</li>
         <li class="right" >
           <a href="configuration.html" title="Configuring mixpanel-celery"
@@ -193,12 +227,12 @@ file in the top distribution directory for the full license text.</p>
         <li class="right" >
           <a href="index.html" title="Welcome to mixpanel-celery’s documentation!"
              >previous</a> |</li>
-        <li><a href="index.html">mixpanel-celery v0.3.0.dev documentation</a> &raquo;</li> 
+        <li><a href="index.html">mixpanel-celery v0.5.0. documentation</a> &raquo;</li> 
       </ul>
     </div>
     <div class="footer">
-      &copy; Copyright 2009, Wes Winham.
-      Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 0.6.3.
+        &copy; Copyright 2009, Wes Winham.
+      Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.0.6.
     </div>
   </body>
 </html>
