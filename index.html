@@ -1,149 +1,100 @@
-
-
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
-  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-
-<html xmlns="http://www.w3.org/1999/xhtml">
+<!doctype html>
+<html>
   <head>
-    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    
-    <title>Welcome to mixpanel-celery’s documentation! &mdash; mixpanel-celery v0.5.0. documentation</title>
-    <link rel="stylesheet" href="static/default.css" type="text/css" />
-    <link rel="stylesheet" href="static/pygments.css" type="text/css" />
-    <script type="text/javascript">
-      var DOCUMENTATION_OPTIONS = {
-        URL_ROOT:    '',
-        VERSION:     '0.5.0.',
-        COLLAPSE_INDEX: false,
-        FILE_SUFFIX: '.html',
-        HAS_SOURCE:  true
-      };
-    </script>
-    <script type="text/javascript" src="static/jquery.js"></script>
-    <script type="text/javascript" src="static/underscore.js"></script>
-    <script type="text/javascript" src="static/doctools.js"></script>
-    <link rel="top" title="mixpanel-celery v0.5.0. documentation" href="#" />
-    <link rel="next" title="mixpanel-celery - Asynchronous event tracking for Mixpanel" href="introduction.html" /> 
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+    <title>Mixpanel-celery by winhamwr</title>
+    <link rel="stylesheet" href="stylesheets/styles.css">
+    <link rel="stylesheet" href="stylesheets/pygment_trac.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+    <script src="javascripts/main.js"></script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+
   </head>
   <body>
-    <div class="related">
-      <h3>Navigation</h3>
-      <ul>
-        <li class="right" style="margin-right: 10px">
-          <a href="genindex.html" title="General Index"
-             accesskey="I">index</a></li>
-        <li class="right" >
-          <a href="py-modindex.html" title="Python Module Index"
-             >modules</a> |</li>
-        <li class="right" >
-          <a href="introduction.html" title="mixpanel-celery - Asynchronous event tracking for Mixpanel"
-             accesskey="N">next</a> |</li>
-        <li><a href="#">mixpanel-celery v0.5.0. documentation</a> &raquo;</li> 
-      </ul>
-    </div>  
 
-    <div class="document">
-      <div class="documentwrapper">
-        <div class="bodywrapper">
-          <div class="body">
-            
-  <div class="section" id="welcome-to-mixpanel-celery-s-documentation">
-<h1>Welcome to mixpanel-celery&#8217;s documentation!<a class="headerlink" href="#welcome-to-mixpanel-celery-s-documentation" title="Permalink to this headline">¶</a></h1>
-<p>Contents:</p>
-<div class="toctree-wrapper compound">
-<ul>
-<li class="toctree-l1"><a class="reference internal" href="introduction.html">mixpanel-celery - Asynchronous event tracking for Mixpanel</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="introduction.html#introduction">Introduction</a></li>
-<li class="toctree-l2"><a class="reference internal" href="introduction.html#installation">Installation</a></li>
-<li class="toctree-l2"><a class="reference internal" href="introduction.html#running-the-test-suite">Running The Test Suite</a></li>
-<li class="toctree-l2"><a class="reference internal" href="introduction.html#configuration">Configuration</a></li>
-<li class="toctree-l2"><a class="reference internal" href="introduction.html#usage">Usage</a></li>
-<li class="toctree-l2"><a class="reference internal" href="introduction.html#building-the-documentation">Building the Documentation</a></li>
-<li class="toctree-l2"><a class="reference internal" href="introduction.html#bug-tracker">Bug Tracker</a></li>
-<li class="toctree-l2"><a class="reference internal" href="introduction.html#license">License</a></li>
-<li class="toctree-l2"><a class="reference internal" href="introduction.html#versioning">Versioning</a></li>
-</ul>
-</li>
-<li class="toctree-l1"><a class="reference internal" href="configuration.html">Configuring mixpanel-celery</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="configuration.html#configuration-options">Configuration Options</a></li>
-</ul>
-</li>
-<li class="toctree-l1"><a class="reference internal" href="reference/index.html">Module API Reference</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="reference/mixpanel.models.html">Empty Django Models: mixpanel - mixpanel.models</a></li>
-<li class="toctree-l2"><a class="reference internal" href="reference/mixpanel.tasks.html">Event Tracker Tasks: mixpanel - mixpanel.tasks</a></li>
-<li class="toctree-l2"><a class="reference internal" href="reference/mixpanel.conf.html">Mixpanel Settings: mixpanel - mixpanel.conf</a></li>
-<li class="toctree-l2"><a class="reference internal" href="reference/mixpanel.conf.settings.html">Configuration: mixpanel - mixpanel.conf.settings</a></li>
-</ul>
-</li>
-</ul>
-</div>
-</div>
-<div class="section" id="indices-and-tables">
-<h1>Indices and tables<a class="headerlink" href="#indices-and-tables" title="Permalink to this headline">¶</a></h1>
-<ul class="simple">
-<li><a class="reference internal" href="genindex.html"><em>Index</em></a></li>
-<li><a class="reference internal" href="py-modindex.html"><em>Module Index</em></a></li>
-<li><a class="reference internal" href="search.html"><em>Search Page</em></a></li>
-</ul>
-</div>
+      <header>
+        <h1>Mixpanel-celery</h1>
+        <p>Asynchronous event tracking for Mixpanel using Celery</p>
+      </header>
 
+      <div id="banner">
+        <span id="logo"></span>
 
-          </div>
+        <a href="https://github.com/winhamwr/mixpanel-celery" class="button fork"><strong>View On GitHub</strong></a>
+        <div class="downloads">
+          <span>Downloads:</span>
+          <ul>
+            <li><a href="https://github.com/winhamwr/mixpanel-celery/zipball/master" class="button">ZIP</a></li>
+            <li><a href="https://github.com/winhamwr/mixpanel-celery/tarball/master" class="button">TAR</a></li>
+          </ul>
         </div>
-      </div>
-      <div class="sphinxsidebar">
-        <div class="sphinxsidebarwrapper">
-  <h3><a href="#">Table Of Contents</a></h3>
-  <ul>
-<li><a class="reference internal" href="#">Welcome to mixpanel-celery&#8217;s documentation!</a><ul>
-</ul>
-</li>
-<li><a class="reference internal" href="#indices-and-tables">Indices and tables</a></li>
-</ul>
+      </div><!-- end banner -->
 
-  <h4>Next topic</h4>
-  <p class="topless"><a href="introduction.html"
-                        title="next chapter">mixpanel-celery - Asynchronous event tracking for Mixpanel</a></p>
-  <h3>This Page</h3>
-  <ul class="this-page-menu">
-    <li><a href="sources/index.txt"
-           rel="nofollow">Show Source</a></li>
-  </ul>
-<div id="searchbox" style="display: none">
-  <h3>Quick search</h3>
-    <form class="search" action="search.html" method="get">
-      <input type="text" name="q" size="18" />
-      <input type="submit" value="Go" />
-      <input type="hidden" name="check_keywords" value="yes" />
-      <input type="hidden" name="area" value="default" />
-    </form>
-    <p class="searchtip" style="font-size: 90%">
-    Enter search terms or a module, class or function name.
-    </p>
-</div>
-<script type="text/javascript">$('#searchbox').show(0);</script>
-        </div>
-      </div>
-      <div class="clearer"></div>
+    <div class="wrapper">
+      <nav>
+        <ul></ul>
+      </nav>
+      <section>
+        <h1>mixpanel-celery</h1>
+
+<p>Asynchronous event tracking for Mixpanel</p>
+
+<p><a href="https://travis-ci.org/winhamwr/mixpanel-celery"><img src="https://travis-ci.org/winhamwr/mixpanel-celery.png?branch=master" alt="Build Status"></a></p>
+
+<p>mixpanel-celery helps you use <a href="http://celeryproject.org">Celery</a>
+to asynchronously track your
+<a href="http://mixpanel.com">Mixpanel</a> events.
+Waiting on HTTP requests to Mixpanel's api to complete
+every time you want to record something slows you down.
+Using mixpanel-celery gives you all of the Mixpanel goodness
+without any of the potential performance impact.</p>
+
+<h2>Works wherever Celery works</h2>
+
+<p>mixpanel-celery works great with Django,
+but because Celery works with just python,
+so does mixpanel-celery.</p>
+
+<h2>But how do I do the thing?</h2>
+
+<p>I'll tell you how!
+Have Celery running and want to asynchronously track an event?
+Is your event called <code>my_event</code>?
+You're in luck!</p>
+
+<pre><code>from mixpanel.tasks import EventTracker
+
+EventTracker.delay(
+    'my_event',
+    {'distinct_id': 1},
+    token='YOUR_API_TOKEN',
+)
+</code></pre>
+
+<p>Boom.
+Once your Celery worker gets hold of that bad boy, it's tracked.</p>
+
+<h2>Full-on Docs</h2>
+
+<p>Would you like to know more?
+Well then you should <a href="http://mixpanel-celery.readthedocs.org">read the docs</a>,
+<a href="http://tvtropes.org/pmwiki/pmwiki.php/Film/StarshipTroopers">citizen</a>.</p>
+
+<h2>We like Mixpanel and Celery</h2>
+
+<p>This project isn't affiliated with the Mixpanel company.
+Just a customer's implementation of a client for their service.</p>
+      </section>
+      <footer>
+        <p>Project maintained by <a href="https://github.com/winhamwr">winhamwr</a></p>
+        <p><small>Hosted on GitHub Pages &mdash; Theme by <a href="http://twitter.com/#!/michigangraham">mattgraham</a></small></p>
+      </footer>
     </div>
-    <div class="related">
-      <h3>Navigation</h3>
-      <ul>
-        <li class="right" style="margin-right: 10px">
-          <a href="genindex.html" title="General Index"
-             >index</a></li>
-        <li class="right" >
-          <a href="py-modindex.html" title="Python Module Index"
-             >modules</a> |</li>
-        <li class="right" >
-          <a href="introduction.html" title="mixpanel-celery - Asynchronous event tracking for Mixpanel"
-             >next</a> |</li>
-        <li><a href="#">mixpanel-celery v0.5.0. documentation</a> &raquo;</li> 
-      </ul>
-    </div>
-    <div class="footer">
-        &copy; Copyright 2009, Wes Winham.
-      Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.0.6.
-    </div>
+    <!--[if !IE]><script>fixScale(document);</script><![endif]-->
+    
   </body>
 </html>
