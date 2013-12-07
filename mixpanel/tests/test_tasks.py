@@ -120,15 +120,21 @@ class EventTrackerTest(unittest.TestCase):
         et = PeopleTracker()
         event = 'set'
         is_test = 1
-        properties = {'stuff': 'thing', 'blue': 'green',
-                      'distinct_id': 'test_id', 'token': 'testtoken'}
+        properties = {
+            'stuff': 'thing',
+            'blue': 'green',
+            'distinct_id': 'test_id',
+            'token': 'testtoken',
+            'ip': '173.194.40.212'
+        }
         expected = {
             '$distinct_id': 'test_id',
+            '$ip': '173.194.40.212',
+            '$token': 'testtoken',
             '$set': {
                 'stuff': 'thing',
                 'blue': 'green',
             },
-            '$token': 'testtoken',
         }
         url_params = et._build_params(event, properties, is_test)
         expected_params = urllib.urlencode({
